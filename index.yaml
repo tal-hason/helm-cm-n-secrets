@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   configMapSecrets:
   - apiVersion: v2
-    created: "2023-08-31T16:36:49.890248105+03:00"
+    created: "2023-08-31T16:49:22.239916419+03:00"
     description: A Helm chart to create and manage configMaps and Secrets
     digest: c3aa625471c2328f4464d45d9efc4229ad060e81b3ad558256f4ea744cadca10
     icon: https://i0.wp.com/in4it.com/wp-content/uploads/2020/11/secret.jpg?w=400&ssl=1
@@ -11,10 +11,10 @@ entries:
     - secret
     name: configMapSecrets
     urls:
-    - https://tal-hason.github.io/helm-chart/configMapSecrets-0.0.2.tgz
+    - https://tal-hason.github.io/helm-cm-n-secrets/configMapSecrets-0.0.2.tgz
     version: 0.0.2
   - apiVersion: v2
-    created: "2023-08-31T16:36:49.890040606+03:00"
+    created: "2023-08-31T16:49:22.239741652+03:00"
     description: A Helm chart to create and manage configMaps and Secrets
     digest: 99d0da5a9e1e1856687705c66fee19ecf74c4e005d02c68820db4f09265cccfe
     keywords:
@@ -22,6 +22,6 @@ entries:
     - secret
     name: configMapSecrets
     urls:
-    - https://tal-hason.github.io/helm-chart/configMapSecrets-0.0.1.tgz
+    - https://tal-hason.github.io/helm-cm-n-secrets/configMapSecrets-0.0.1.tgz
     version: 0.0.1
-generated: "2023-08-31T16:36:49.889707847+03:00"
+generated: "2023-08-31T16:49:22.23945177+03:00"
