@@ -19,6 +19,12 @@ helm pull configmap-n-secrets/configMapSecrets
 ### Value file structure
 
 ```YAML
+commonLables: # common labels to all configMap and Secrets
+  my-label: here
+
+commonAnnotations: # common Annotaions to all configMap and Secrets
+  my-annotation: here
+
 configMaps: # an array of configmaps with their details and values
   - name: app-properties # the name of the configMap
     enabled: true # this will enable the creation of the configMap
@@ -31,7 +37,7 @@ configMaps: # an array of configmaps with their details and values
     enabled: true # this will enable the creation of the configMap
     type: string # the type of the configmap, 2 types are available 1, string(file style) 2, Key & values(environment variables)
     fileName: files1 # the name of the file/key in the config map
-    data: | # this is the Key that will store the data of the configmap to both types
+    data: # this is the Key that will store the data of the configmap to both types
       12334455666777888
   - name: env-details # the name of the configMap
     enabled: true # this will enable the creation of the configMap
@@ -47,7 +53,7 @@ secrets: # an array of configmaps with their details and values will be Base64 e
     type: string # the type of the configmap, 2 types are available 1, string(file style) 2, Key & values(environment variables)
     fileName: db.string # the name of the file/key in the secret
     secretType: Opaque # k8s secret type (Opaque, kubernetes.io/service-account-token, kubernetes.io/dockercfg, kubernetes.io/dockerconfigjson, kubernetes.io/basic-auth, kubernetes.io/ssh-auth, kubernetes.io/tls, bootstrap.kubernetes.io/token)
-    data: | # this is the Key that will store the data of the configmap to both types
+    data: # this is the Key that will store the data of the configmap to both types
       some file content
       with details of the application
   - name: env-details # the name of the configMap
@@ -105,16 +111,24 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: app-properties
+  labels:
+    my-label: "here" 
+  annotations:
+    my-annotation: "here" 
 type: Opaque
 data:
   db.string: |
-    "c29tZSBmaWxlIGNvbnRlbnQKd2l0aCBkZXRhaWxzIG9mIHRoZSBhcHBsaWNhdGlvbgo="
+    "c29tZSBmaWxlIGNvbnRlbnQgd2l0aCBkZXRhaWxzIG9mIHRoZSBhcHBsaWNhdGlvbg=="
 ---
 # Source: configMapSecrets/templates/secret.yaml
 apiVersion: v1
 kind: Secret
 metadata:
   name: env-details
+  labels:
+    my-label: "here" 
+  annotations:
+    my-annotation: "here" 
 type: Opaque
 data:
   ENV: ImRldmVsb3Ai
