@@ -7,7 +7,7 @@ metadata:
   name: {{ .name }}
   labels:
     helm-chart/release-name: {{ $.Release.Name }}
-    helm-chart/release-version: {{ $.Release.version }}
+    helm-chart/release-version: {{ $.Release.Version }}
     {{- range $key, $value := $.Values.commonLables }}
     {{ $key }}: {{ $value | quote }}
     {{- end }} 
