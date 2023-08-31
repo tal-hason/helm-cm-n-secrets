@@ -21,3 +21,5 @@ git commit -m "new patch commited"
 
 echo "push new version ${NEW_VERSION} to remote"
 git push
+
+echo "version ${NEW_VERSION} is in repository"
