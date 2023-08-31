@@ -1,0 +1,17 @@
+{{- range .Values.configMaps }}
+{{- if .enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .name }}
+data:
+  {{- if eq .type "string" }}
+  {{ .fileName }}: |
+    {{- .data | quote | nindent 4 -}}
+  {{- else if eq .type "keyValues" }}
+  {{- range $key, $value := .data }}
+  {{ $key }}: {{ $value | quote }}
+  {{- end }}
+  {{- end }}
+{{- end }}
+{{- end }}
