@@ -1,5 +1,7 @@
 echo "patch new version"
-yq eval '.version |= split(".") | .[2] = (."[2"] + 1) | join(".")'  configMapSecrets/Chart.yaml -i
+OLD_VERSION=$(yq eval '.version' values.yaml)
+NEW_VERSION=$(echo $OLD_VERSION | awk -F. '{print $1"."$2"."$3+1}')
+yq eval '.version = "'$NEW_VERSION'"' values.yaml -i
 
 yq '.version' configMapSecrets/Chart.yaml
 
@@ -12,8 +14,8 @@ helm repo index --url https://tal-hason.github.io/helm-cm-n-secrets/ .
 echo "Add to git"
 git add -A
 
-echo "Commit new version"
+echo "Commit new version ${NEW_VERSION}"
 git commit -m "new patch commited"
 
-echo "push new version to remote"
+echo "push new version ${NEW_VERSION} to remote"
 git push
