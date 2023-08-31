@@ -16,7 +16,7 @@ metadata:
     {{- end }} 
 data:
   {{- if eq .type "string" }}
-  {{ .fileName }}: |
+  {{ .fileName }}: |+
     {{- .data | quote | nindent 4 }}
   {{- else if eq .type "keyValues" }}
   {{- range $key, $value := .data }}

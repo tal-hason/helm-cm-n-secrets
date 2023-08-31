@@ -1,0 +1,40 @@
+---
+# Source: configMapSecrets/templates/configMap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-properties
+  labels:
+    my-label: "here" 
+  annotations:
+    my-annotation: "here" 
+data:
+  application.properties: >
+    "some file content\nwith details of the application\n"
+---
+# Source: configMapSecrets/templates/configMap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: some-files
+  labels:
+    my-label: "here" 
+  annotations:
+    my-annotation: "here" 
+data:
+  files1: >
+    "\"12334455666777888\"\n"
+---
+# Source: configMapSecrets/templates/configMap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-details
+  labels:
+    my-label: "here" 
+  annotations:
+    my-annotation: "here" 
+data:
+  ENV: "develop"
+  HOST: "localhost"
+  PORT: "8080"
