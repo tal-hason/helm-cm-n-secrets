@@ -10,8 +10,8 @@ configMaps: # an array of configmaps with their details and values
     type: string # the type of the configmap, 2 types are available 1, string(file style) 2, Key & values(environment variables)
     fileName: application.properties # the name of the file/key in the config map
     data: | # this is the Key that will store the data of the configmap to both types
-      'some file content
-      with details of the application'
+      some file content
+      with details of the application
   - name: some-files # the name of the configMap
     enabled: true # this will enable the creation of the configMap
     type: string # the type of the configmap, 2 types are available 1, string(file style) 2, Key & values(environment variables)
