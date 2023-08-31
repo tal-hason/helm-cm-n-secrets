@@ -1,8 +1,6 @@
-commonLables:
-  my-label: here
+commonLables: {}
 
-commonAnnotations:
-  my-annotation: here
+commonAnnotations: {}
 
 configMaps: # an array of configmaps with their details and values
   - name: app-properties # the name of the configMap

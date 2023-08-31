@@ -4,6 +4,11 @@
 
 ## This is a HELM Chart repo for a chart that creates a configMaps and Secrets from an array in the value file
 
+- support multiline string date with user defrined file name.
+- support Key & Value for environment variables.
+- support all K8S secret type by changing the secretType for each secret.
+- support adding common labels and annotations to all configmaps and secrets
+
 *to add this HELM repo to you HELM client run the following:*
 
 ```bash
@@ -78,24 +83,37 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: app-properties
+  labels:
+    my-label: "here" 
+  annotations:
+    my-annotation: "here" 
 data:
   application.properties: |
-    "some file content with details of the application"
+    some file content
+    with details of the application
 ---
 # Source: configMapSecrets/templates/configMap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: some-files
+  labels:
+    my-label: "here" 
+  annotations:
+    my-annotation: "here" 
 data:
   files1: |
-    "1.2334455666777888e+16"
+    '12334455666777888'
 ---
 # Source: configMapSecrets/templates/configMap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: env-details
+  labels:
+    my-label: "here" 
+  annotations:
+    my-annotation: "here" 
 data:
   ENV: "develop"
   HOST: "localhost"
@@ -117,8 +135,7 @@ metadata:
     my-annotation: "here" 
 type: Opaque
 data:
-  db.string: |
-    "c29tZSBmaWxlIGNvbnRlbnQgd2l0aCBkZXRhaWxzIG9mIHRoZSBhcHBsaWNhdGlvbg=="
+  dbstring: "ICAgIHNvbWUgZmlsZSBjb250ZW50CiAgICB3aXRoIGRldGFpbHMgb2YgdGhlIGFwcGxpY2F0aW9uCiAgICA="
 ---
 # Source: configMapSecrets/templates/secret.yaml
 apiVersion: v1
