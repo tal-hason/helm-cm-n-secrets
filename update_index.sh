@@ -1,5 +1,5 @@
 echo "patch new version"
-yq eval '.version |= split(".") | .[2] = ((.[2] | tonumber) + 1) | join(".")'  configMapSecrets/Chart.yaml -i
+yq eval '.version |= split(".") | .[2] = (."[2"] + 1) | join(".")'  configMapSecrets/Chart.yaml -i
 
 yq '.version' configMapSecrets/Chart.yaml
 
