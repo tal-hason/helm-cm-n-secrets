@@ -1,8 +1,8 @@
 apiVersion: v2
 description: A Helm chart to create and manage configMaps and Secrets
 keywords:
-- configmap
-- secret
+  - configmap
+  - secret
 name: configMapSecrets
-version: 0.0.6
+version: 0.0.7
 icon: https://i0.wp.com/in4it.com/wp-content/uploads/2020/11/secret.jpg?w=400&ssl=1

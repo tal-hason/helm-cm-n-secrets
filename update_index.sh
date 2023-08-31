@@ -1,7 +1,7 @@
 echo "patch new version"
-OLD_VERSION=$(yq eval '.version' values.yaml)
+OLD_VERSION=$(yq eval '.version' configMapSecrets/Chart.yaml)
 NEW_VERSION=$(echo $OLD_VERSION | awk -F. '{print $1"."$2"."$3+1}')
-yq eval '.version = "'$NEW_VERSION'"' values.yaml -i
+yq eval '.version = "'$NEW_VERSION'"' configMapSecrets/Chart.yaml -i
 
 yq '.version' configMapSecrets/Chart.yaml
 
