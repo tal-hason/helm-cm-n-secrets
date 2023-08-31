@@ -6,10 +6,18 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ .name }}
+  labels:
+    {{- range $key, $value := $.Values.commonLables }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }} 
+  annotations:
+    {{- range $key, $value := $.Values.commonAnnotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }} 
 data:
   {{- if eq .type "string" }}
   {{ .fileName }}: |
-    {{- .data | quote | nindent 4 -}}
+    {{- .data | quote | nindent 4 }}
   {{- else if eq .type "keyValues" }}
   {{- range $key, $value := .data }}
   {{ $key }}: {{ $value | quote }}
