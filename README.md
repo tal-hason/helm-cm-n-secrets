@@ -1,6 +1,6 @@
 # ConfigMap And Secrets Helm Chart
 
-This is a HELM Chart repo for a chart that creates a configMaps and Secrets from an array in the value file
+## This is a HELM Chart repo for a chart that creates a configMaps and Secrets from an array in the value file
 
 ```YAML
 configMaps: # an array of configmaps with their details and values
@@ -44,7 +44,7 @@ secrets: # an array of configmaps with their details and values will be Base64 e
       ENV: develop # Key & Values 3
 ```
 
-### the output will be:
+### the output will be
 
 for configMaps:
 
