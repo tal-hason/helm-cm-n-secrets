@@ -2,6 +2,20 @@
 
 ## This is a HELM Chart repo for a chart that creates a configMaps and Secrets from an array in the value file
 
+*to add this HELM repo to you HELM client run the following:*
+
+```bash
+helm repo add configmap-n-secrets https://tal-hason.github.io/helm-cm-n-secrets/
+```
+
+*to pull the chart run:*
+
+```bash
+helm pull configmap-n-secrets/configMapSecrets
+```
+
+### Value file structure
+
 ```YAML
 configMaps: # an array of configmaps with their details and values
   - name: app-properties # the name of the configMap
@@ -46,7 +60,7 @@ secrets: # an array of configmaps with their details and values will be Base64 e
 
 ### the output will be
 
-for configMaps:
+**for configMaps:**
 
 ```YAML
 ---
@@ -79,7 +93,7 @@ data:
   PORT: "8080"
 ```
 
-For secrets:
+**For secrets:**
 
 ```YAML
 ---
