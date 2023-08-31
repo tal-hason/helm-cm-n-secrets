@@ -1,5 +1,7 @@
 # ConfigMap And Secrets Helm Chart
 
+latest_vesion: 0.0.11
+
 ![HELM](https://raw.githubusercontent.com/tal-hason/helm-cm-n-secrets/main/assests/Helm-logo.webp)
 
 ## This is a HELM Chart repo for a chart that creates a configMaps and Secrets from an array in the value file
