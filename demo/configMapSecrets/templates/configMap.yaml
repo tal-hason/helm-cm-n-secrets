@@ -1,0 +1,41 @@
+---
+# Source: configMapSecrets/templates/configMap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-properties
+  labels:
+    helm-chart/release-name: test
+    helm.sh/chart: 'configMapSecrets-0.0.7' 
+  annotations: 
+data:
+  application.properties: |
+    some file content
+    with details of the application
+---
+# Source: configMapSecrets/templates/configMap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: some-files
+  labels:
+    helm-chart/release-name: test
+    helm.sh/chart: 'configMapSecrets-0.0.7' 
+  annotations: 
+data:
+  files1: |
+    '12334455666777888'
+---
+# Source: configMapSecrets/templates/configMap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-details
+  labels:
+    helm-chart/release-name: test
+    helm.sh/chart: 'configMapSecrets-0.0.7' 
+  annotations: 
+data:
+  ENV: "develop"
+  HOST: "localhost"
+  PORT: "8080"
