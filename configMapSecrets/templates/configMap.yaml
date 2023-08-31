@@ -6,8 +6,8 @@ kind: ConfigMap
 metadata:
   name: {{ .name }}
   labels:
-    helm-chart/release-name: {{ .Release.Name }}
-    helm-chart/release-version: {{ .Release.version }}
+    helm-chart/release-name: {{ $.Release.Name }}
+    helm-chart/release-version: {{ $.Release.version }}
     {{- range $key, $value := $.Values.commonLables }}
     {{ $key }}: {{ $value | quote }}
     {{- end }} 
