@@ -1,18 +1,18 @@
 configMaps: # an array of configmaps with their details and values
-  - name: appProperties # the name of the configMap
+  - name: app-properties # the name of the configMap
     enabled: true # this will enable the creation of the configMap
     type: string # the type of the configmap, 2 types are avialble 1,string(file style) 2, Key & values(enviorment variables)
     fileName: application.properties # the name of the file/key in the config map
     data: # this is the Key that will store the data of the configmap to both types
       some file content
       with details of the application
-  - name: someFiles # the name of the configMap
+  - name: some-files # the name of the configMap
     enabled: true # this will enable the creation of the configMap
     type: string # the type of the configmap, 2 types are avialble 1,string(file style) 2, Key & values(enviorment variables)
     fileName: files1 # the name of the file/key in the config map
     data: # this is the Key that will store the data of the configmap to both types
       12334455666777888
-  - name: envDetails # the name of the configMap
+  - name: env-details # the name of the configMap
     enabled: true # this will enable the creation of the configMap
     type: keyValues # the type of the configmap, 2 types are avialble 1,string(file style) 2, Key & values(enviorment variables)
     data: # this is the Key that will store the data of the configmap to both types
@@ -21,7 +21,7 @@ configMaps: # an array of configmaps with their details and values
       ENV: develop # Key & Values 3
 
 secrets: # an array of configmaps with their details and values will be Base64 encoded
-  - name: appProperties # the name of the configMap
+  - name: app-properties # the name of the configMap
     enabled: true # this will enable the creation of the configMap
     type: string # the type of the configmap, 2 types are avialble 1,string(file style) 2, Key & values(enviorment variables)
     fileName: db.string # the name of the file/key in the secret
@@ -29,7 +29,7 @@ secrets: # an array of configmaps with their details and values will be Base64 e
     data: | # this is the Key that will store the data of the configmap to both types
       some file content
       with details of the application
-  - name: envDetails # the name of the configMap
+  - name: env-details # the name of the configMap
     enabled: false # this will enable the creation of the configMap
     type: keyValues # the type of the configmap, 2 types are avialble 1,string(file style) 2, Key & values(enviorment variables)
     secretType: Opaque # k8s secret type (Opaque, kubernetes.io/service-account-token, kubernetes.io/dockercfg, kubernetes.io/dockerconfigjson, kubernetes.io/basic-auth, kubernetes.io/ssh-auth, kubernetes.io/tls, bootstrap.kubernetes.io/token)
