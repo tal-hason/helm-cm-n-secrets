@@ -1,0 +1,28 @@
+---
+# Source: configMapSecrets/templates/configMap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-properties
+data:
+  application.properties: |
+    "some file content with details of the application"
+---
+# Source: configMapSecrets/templates/configMap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: some-files
+data:
+  files1: |
+    "1.2334455666777888e+16"
+---
+# Source: configMapSecrets/templates/configMap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-details
+data:
+  ENV: "develop"
+  HOST: "localhost"
+  PORT: "8080"
