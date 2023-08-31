@@ -35,7 +35,7 @@ secrets: # an array of configmaps with their details and values will be Base64 e
       some file content
       with details of the application
   - name: env-details # the name of the configMap
-    enabled: false # this will enable the creation of the configMap
+    enabled: true # this will enable the creation of the configMap
     type: keyValues # the type of the configmap, 2 types are avialble 1,string(file style) 2, Key & values(enviorment variables)
     secretType: Opaque # k8s secret type (Opaque, kubernetes.io/service-account-token, kubernetes.io/dockercfg, kubernetes.io/dockerconfigjson, kubernetes.io/basic-auth, kubernetes.io/ssh-auth, kubernetes.io/tls, bootstrap.kubernetes.io/token)
     data: # this is the Key that will store the data of the configmap to both types
@@ -44,5 +44,63 @@ secrets: # an array of configmaps with their details and values will be Base64 e
       ENV: develop # Key & Values 3
 ```
 
-the output will be:
+### the output will be:
 
+for configMaps:
+
+```YAML
+---
+# Source: configMapSecrets/templates/configMap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-properties
+data:
+  application.properties: |
+    "some file content with details of the application"
+---
+# Source: configMapSecrets/templates/configMap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: some-files
+data:
+  files1: |
+    "1.2334455666777888e+16"
+---
+# Source: configMapSecrets/templates/configMap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-details
+data:
+  ENV: "develop"
+  HOST: "localhost"
+  PORT: "8080"
+```
+
+For secrets:
+
+```YAML
+---
+# Source: configMapSecrets/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-properties
+type: Opaque
+data:
+  db.string: |
+    "c29tZSBmaWxlIGNvbnRlbnQKd2l0aCBkZXRhaWxzIG9mIHRoZSBhcHBsaWNhdGlvbgo="
+---
+# Source: configMapSecrets/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: env-details
+type: Opaque
+data:
+  ENV: ImRldmVsb3Ai
+  HOST: ImxvY2FsaG9zdCI=
+  PORT: IjgwODAi
+```
