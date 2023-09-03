@@ -1,6 +1,6 @@
 # ConfigMap And Secrets Helm Chart
 
-latest_vesion: 0.0.12
+latest_vesion: 0.0.13
 
 ![HELM](https://raw.githubusercontent.com/tal-hason/helm-cm-n-secrets/main/assests/Helm-logo.webp)
 
@@ -26,11 +26,11 @@ helm pull configmap-n-secrets/configMapSecrets
 ### Value file structure
 
 ```YAML
-commonLables: # common labels to all configMap and Secrets
-  my-label: here
+commonLables:
+  this-is-a-label: "some label"
 
-commonAnnotations: # common Annotaions to all configMap and Secrets
-  my-annotation: here
+commonAnnotations: 
+  this-is-an-annotaion: "some annotation"
 
 configMaps: # an array of configmaps with their details and values
   - name: app-properties # the name of the configMap
@@ -44,8 +44,8 @@ configMaps: # an array of configmaps with their details and values
     enabled: true # this will enable the creation of the configMap
     type: string # the type of the configmap, 2 types are available 1, string(file style) 2, Key & values(environment variables)
     fileName: files1 # the name of the file/key in the config map
-    data: # this is the Key that will store the data of the configmap to both types
-      12334455666777888
+    data: | # this is the Key that will store the data of the configmap to both types
+      '12334455666777888'
   - name: env-details # the name of the configMap
     enabled: true # this will enable the creation of the configMap
     type: keyValues # the type of the configmap, 2 types are available 1, string(file style) 2, Key & values(environment variables)
@@ -58,9 +58,9 @@ secrets: # an array of configmaps with their details and values will be Base64 e
   - name: app-properties # the name of the configMap
     enabled: true # this will enable the creation of the configMap
     type: string # the type of the configmap, 2 types are available 1, string(file style) 2, Key & values(environment variables)
-    fileName: db.string # the name of the file/key in the secret
+    fileName: dbstring # the name of the file/key in the secret
     secretType: Opaque # k8s secret type (Opaque, kubernetes.io/service-account-token, kubernetes.io/dockercfg, kubernetes.io/dockerconfigjson, kubernetes.io/basic-auth, kubernetes.io/ssh-auth, kubernetes.io/tls, bootstrap.kubernetes.io/token)
-    data: # this is the Key that will store the data of the configmap to both types
+    data: | # this is the Key that will store the data of the configmap to both types
       some file content
       with details of the application
   - name: env-details # the name of the configMap
@@ -71,7 +71,6 @@ secrets: # an array of configmaps with their details and values will be Base64 e
       HOST: localhost # Key & Values 1
       PORT: "8080" # Key & Values 2
       ENV: develop # Key & Values 3
-
 ```
 
 ### the output will be
@@ -86,9 +85,12 @@ kind: ConfigMap
 metadata:
   name: app-properties
   labels:
-    my-label: "here" 
+    helm-chart/release-name: demo
+    helm.sh/chart: 'configMapSecrets-0.0.12'
+    this-is-a-label: "some label" 
   annotations:
-    my-annotation: "here" 
+    helm-chart/release-version: 0.0.12
+    this-is-an-annotaion: "some annotation" 
 data:
   application.properties: |
     some file content
@@ -100,9 +102,12 @@ kind: ConfigMap
 metadata:
   name: some-files
   labels:
-    my-label: "here" 
+    helm-chart/release-name: demo
+    helm.sh/chart: 'configMapSecrets-0.0.12'
+    this-is-a-label: "some label" 
   annotations:
-    my-annotation: "here" 
+    helm-chart/release-version: 0.0.12
+    this-is-an-annotaion: "some annotation" 
 data:
   files1: |
     '12334455666777888'
@@ -113,9 +118,12 @@ kind: ConfigMap
 metadata:
   name: env-details
   labels:
-    my-label: "here" 
+    helm-chart/release-name: demo
+    helm.sh/chart: 'configMapSecrets-0.0.12'
+    this-is-a-label: "some label" 
   annotations:
-    my-annotation: "here" 
+    helm-chart/release-version: 0.0.12
+    this-is-an-annotaion: "some annotation" 
 data:
   ENV: "develop"
   HOST: "localhost"
@@ -132,9 +140,12 @@ kind: Secret
 metadata:
   name: app-properties
   labels:
-    my-label: "here" 
+    helm-chart/release-name: demo
+    helm.sh/chart: 'configMapSecrets-0.0.12'
+    this-is-a-label: "some label" 
   annotations:
-    my-annotation: "here" 
+    helm-chart/release-version: 0.0.12
+    this-is-an-annotaion: "some annotation" 
 type: Opaque
 data:
   dbstring: "ICAgIHNvbWUgZmlsZSBjb250ZW50CiAgICB3aXRoIGRldGFpbHMgb2YgdGhlIGFwcGxpY2F0aW9uCiAgICA="
@@ -145,9 +156,12 @@ kind: Secret
 metadata:
   name: env-details
   labels:
-    my-label: "here" 
+    helm-chart/release-name: demo
+    helm.sh/chart: 'configMapSecrets-0.0.12'
+    this-is-a-label: "some label" 
   annotations:
-    my-annotation: "here" 
+    helm-chart/release-version: 0.0.12
+    this-is-an-annotaion: "some annotation" 
 type: Opaque
 data:
   ENV: ImRldmVsb3Ai
