@@ -1,8 +1,8 @@
 commonLables:
-  this-is-a-label: some label
+  this-is-a-label: some-label
 
 commonAnnotations: 
-  this-is-an-annotaion: some annotation
+  this-is-an-annotaion: some-annotation
 
 configMaps: # an array of configmaps with their details and values
   - name: app-properties # the name of the configMap
