@@ -4,7 +4,9 @@ commonLables:
 commonAnnotations: 
   this-is-an-annotaion: some-annotation
 
-configMaps: # an array of configmaps with their details and values
+configMaps:
+  enabled: true
+  configMapDetails: # an array of configmaps with their details and values
   - name: app-properties # the name of the configMap
     enabled: true # this will enable the creation of the configMap
     type: string # the type of the configmap, 2 types are available 1, string(file style) 2, Key & values(environment variables)
@@ -26,7 +28,9 @@ configMaps: # an array of configmaps with their details and values
       PORT: "8080" # Key & Values 2
       ENV: develop # Key & Values 3
 
-secrets: # an array of configmaps with their details and values will be Base64 encoded
+secrets:
+  enabled: false
+  secretDetails: # an array of configmaps with their details and values will be Base64 encoded
   - name: app-properties # the name of the configMap
     enabled: true # this will enable the creation of the configMap
     type: string # the type of the configmap, 2 types are available 1, string(file style) 2, Key & values(environment variables)
