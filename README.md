@@ -1,6 +1,6 @@
 # ConfigMap And Secrets Helm Chart
 
-latest_vesion: 0.0.15
+latest_vesion: 0.0.16
 
 ![HELM](https://raw.githubusercontent.com/tal-hason/helm-cm-n-secrets/main/assests/Helm-logo.webp)
 
