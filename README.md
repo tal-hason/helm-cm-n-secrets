@@ -9,7 +9,8 @@ latest_vesion: 0.0.15
 - support multiline string date with user defrined file name.
 - support Key & Value for environment variables.
 - support all K8S secret type by changing the secretType for each secret.
-- support adding common labels and annotations to all configmaps and secrets
+- support adding common labels and annotations to all configmaps and secrets.
+- added a global enable/disable for configmaps and secrets.
 
 *to add this HELM repo to you HELM client run the following:*
 
